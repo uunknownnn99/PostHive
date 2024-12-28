@@ -1,0 +1,60 @@
+body {
+  font-family: 'Roboto', sans-serif; /* Updated to a modern font */
+  background-color: #eef2f7; /* Softer background for better readability */
+  color: #333; /* Darker text color for contrast */
+}
+
+.post-title {
+  font-size: 2.5rem; /* Slightly larger for emphasis */
+  font-weight: bold;
+  color: #2c3e50; /* Dark blue-gray for better focus */
+}
+
+.post-description {
+  font-size: 1.2rem; /* Improved readability */
+  line-height: 1.6; /* Better text spacing */
+  color: #4f5d75; /* Neutral dark gray */
+}
+
+.comments-section {
+  margin-top: 2.5rem; /* Slightly larger gap for clarity */
+}
+
+.comment {
+  border-bottom: 1px solid #ccc; /* Softer separator */
+  padding: 1.2rem 0; /* Enhanced spacing */
+}
+
+.comment strong {
+  color: #0056b3; /* Darker blue for emphasis */
+  font-weight: 600; /* Slightly bolder text */
+}
+
+textarea {
+  resize: vertical;
+  border-radius: 0.25rem; /* Rounded corners for a modern look */
+  border: 1px solid #ced4da; /* Subtle border for better visibility */
+}
+
+.list-group-item {
+  border: none;
+  padding: 12px 0; /* Increased padding for spacing */
+  background-color: #f9f9f9; /* Light background for differentiation */
+}
+
+.list-group-item strong {
+  color: #0056b3; /* Consistent with comment user name color */
+}
+
+.list-group-item small {
+  color: #868e96; /* Softer gray for subtlety */
+}
+
+/* Additional hover effects */
+.comment strong:hover {
+  text-decoration: underline; /* Interactive visual cue */
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef; /* Highlight on hover */
+}

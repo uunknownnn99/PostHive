@@ -1,0 +1,99 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar */
+  .navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover {
+    color: #f8d7da !important;
+  }
+  
+  /* Page Container */
+  .container {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  /* Post Card */
+  .card {
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .btn {
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #198754;
+    color: #fff;
+  }
+  
+  /* Comments Section */
+  .list-group-item {
+    border: none;
+    background-color: #f8f9fa;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .comment-form .form-control {
+    border-radius: 20px;
+    box-shadow: none;
+  }
+  
+  .comment-form .btn {
+    border-radius: 20px;
+  }
+  
+  /* Footer (Optional) */
+  footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  

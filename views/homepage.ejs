@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostHive</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/styleHomepage.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">PostHive</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/user/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/post/createPost">Create Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="/user/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Posts</h1>
+
+      <!-- Posts Section -->
+      <div class="row">
+        <% if (posts.length > 0) { %>
+        <div class="posts-container d-flex flex-wrap justify-content-center">
+          <% posts.forEach(post => { %>
+          <div class="post-card m-3" data-id="<%= post._id %>">
+            <span>
+            <h5 class="post-title"><%= post.title %></h5>
+            <% if (loggedInUser == post.createdBy._id) { %>
+              <button class="postDelete" data-id="<%= post._id %>" >Delete</button>
+            <% } %>
+          </span>
+            <!-- Media Carousel -->
+            <% if (post.media.length > 0) { %>
+            <div
+              id="carousel-<%= post._id %>"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <% post.media.forEach((file, index) => { %>
+                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                  <% if (file.type === 'image') { %>
+                  <img
+                    src="<%= file.url %>"
+                    class="d-block w-100"
+                    alt="Media Image"
+                  />
+                  <% } else if (file.type === 'video') { %>
+                  <video
+                    controls
+                    class="d-block w-100"
+                    onclick="event.stopPropagation();"
+                  >
+                    <source src="<%= file.url %>" type="video/mp4" />
+                  </video>
+                  <% } else if (file.type === 'audio') { %>
+                  <audio controls class="d-block w-100">
+                    <source src="<%= file.url %>" type="audio/mpeg" />
+                  </audio>
+                  <% } %>
+                </div>
+                <% }); %>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carousel-<%= post._id %>"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carousel-<%= post._id %>"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <% } %>
+
+            <!-- Description Section -->
+            <p class="post-description mt-3"><%= post.content %></p>
+
+            <!-- Actions -->
+            <div class="post-actions d-flex justify-content-between mt-2">
+              <button
+                class="btn like-btn <%= post.userLiked ? 'btn-danger' : 'btn-outline-danger' %>"
+                data-id="<%= post._id %>"
+              >
+                <%= post.userLiked ? 'Unlike (' + post.likes + ')' : 'Like (' +
+                post.likes + ')' %>
+              </button>
+            </div>
+            <div class="comments-section mt-4 cooment">
+              <h4>Comments</h4>
+              <% post.comments.forEach((comment) => { %>
+              <div class="comment">
+                <span>
+                  <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+                  <% if (loggedInUser == comment.user._id) { %>
+                    <button class="commentDelete" data-postid="<%= post._id %>" data-id="<%= comment._id %>">Delete</button>
+                  <% } %>
+                </span>
+              </div>
+              <% }); %>
+              <form action="/post/<%= post._id %>/comment" method="POST">
+                <div class="mb-3">
+                  <label for="commentText" class="form-label"
+                    >Add a Comment</label
+                  >
+                  <textarea
+                    id="commentText"
+                    name="text"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Post Comment
+                </button>
+              </form>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+        <% } else { %>
+        <p class="text-center">No posts available. Create the first post!</p>
+        <% } %>
+      </div>
+    </div>
+
+    <footer class="text-center py-3">
+      &copy; 2024 PostHive. All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".post-card").forEach((card) => {
+          card.addEventListener("click", (event) => {
+            // Prevent redirection if the click is inside the comments section or on a button
+            const commentsSection = card.querySelector(".comments-section");
+            if (
+              event.target.tagName === "BUTTON" ||
+              event.target.closest(".comments-section")
+            ) {
+              return;
+            }
+            const postId = card.dataset.id;
+            if (postId) window.location.href = `/post/${postId}`;
+          });
+        });
+
+        document.querySelectorAll(".like-btn").forEach((button) => {
+          button.addEventListener("click", async (event) => {
+            const postId = event.target.dataset.id;
+            const action = event.target.classList.contains("btn-danger")
+              ? "unlike"
+              : "like";
+            const response = await fetch(`/post/${postId}/${action}`, {
+              method: "POST",
+            });
+            if (response.ok) location.reload();
+          });
+        });
+
+        document.querySelectorAll(".commentDelete").forEach((button)=>{
+          button.addEventListener("click", async(event)=>{
+            const commentId = event.target.dataset.id;
+            const postId = event.target.dataset.postid;
+            const response = await fetch(`/post/${postId}/${commentId}`,{
+              method: "DELETE",
+            });
+            if(response.ok) location.reload();
+          });
+        });
+
+        document.querySelectorAll(".postDelete").forEach((button)=>{
+          button.addEventListener("click", async (event)=>{
+            const postId = event.target.dataset.id;
+            const response = await fetch(`/post/${postId}`, {
+              method: "DELETE",
+            });
+            if(response.ok) location.reload();
+          });
+        });
+
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+/* General Styling */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.header h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+.header p {
+  color: #666;
+  font-size: 1.1em;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.auth-buttons button {
+  padding: 0.6em 1.5em;
+  font-size: 1em;
+  color: #fff;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-buttons button:hover {
+  background-color: #357ab8;
+}
+
+/* Modals */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2em;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+.modal-content h2 {
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.modal-content label {
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 0.8em;
+}
+
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 0.6em;
+  margin-top: 0.4em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.show-password {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.show-password input {
+  margin-right: 0.4em;
+}
+
+.submit-btn {
+  padding: 0.6em 1.5em;
+  font-size: 1em;
+  color: #fff;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #357ab8;
+}
+
+.close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #666;
+}
+
+.close:hover {
+  color: #333;
+}
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 1em;
+}
+
+/* Profile Picture Upload Field */
+#profilePicture {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#profilePicture:hover {
+  border-color: #888;
+  background-color: #f3f3f3;
+}
+
+#profilePicture:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+ /* Reset some default styles */
+ body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.profile-container {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  width: 350px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4caf50; /* Green border for aesthetic */
+  margin-bottom: 15px;
+}
+
+.profile-info {
+  margin: 10px 0;
+}
+
+.profile-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.profile-data {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.action-buttons button {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button {
+  background-color: #007bff;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #a71d2a;
+}

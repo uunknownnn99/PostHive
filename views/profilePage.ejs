@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/styleProfilePage.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">PostHive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/user/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/post/createPost">Create Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="/user/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="container">
+      <!-- Left Section -->
+      <div class="profile-container">
+        <img
+          src="<%= data.profileImageUrl %>"
+          alt="Profile Image"
+          class="profile-image"
+        />
+        <div class="profile-info">
+          <div class="profile-label">Name</div>
+          <div class="profile-data"><%= data.name %></div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-label">Email</div>
+          <div class="profile-data"><%= data.email %></div>
+        </div>
+        <div class="action-buttons">
+          <button id="edit-profile-button" class="edit-button">
+            Edit Profile
+          </button>
+          <button id="change-password-button" class="changePassword-button">
+            Change Password
+          </button>
+          <button id="delete-account-button" class="delete-button">
+            Delete Account
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="posts-container">
+        <div class="post">
+          <div class="post-title">Post Title 1</div>
+          <div class="post-content">
+            This is a sample post content. Add your dynamic content here.
+          </div>
+        </div>
+        <div class="post">
+          <div class="post-title">Post Title 2</div>
+          <div class="post-content">
+            This is another sample post content. Customize as needed.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lower Section -->
+    <div class="lower-section">
+      <% if (error && error.length > 0) { %>
+      <div class="error-block" id="error-block" style="display: block">
+        <pre> <%= error %> </pre>
+      </div>
+      <% } %>
+
+      <form
+        action="/user/changePassword"
+        method="POST"
+        id="change-password-form"
+        class="hidden-form"
+      >
+        <h3>Change Password</h3>
+        <label for="current-password">Current Password</label>
+        <input
+          type="password"
+          id="current-password"
+          name="currentPassword"
+          required
+        />
+        <label for="new-password">New Password</label>
+        <input type="password" id="new-password" name="newPassword" required />
+        <button type="submit">Submit</button>
+      </form>
+
+      <form
+        action="/user/profile"
+        method="POST"
+        id="edit-profile-form"
+        class="hidden-form"
+        enctype="multipart/form-data"
+      >
+        <h3>Edit Profile</h3>
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="newName"
+          value="<%= data.name %>"
+          required
+        />
+        <label for="profilePicture">Profile Picture</label>
+        <input
+          type="file"
+          name="newProfileImage"
+          id="profilePicture"
+          accept="image/*"
+        />
+        <button type="submit">Update</button>
+      </form>
+
+      <form
+        action="/user/delete"
+        method="POST"
+        id="delete-account-form"
+        class="hidden-form"
+      >
+        <h3>Delete Account</h3>
+        <label for="password">Enter Password</label>
+        <input type="password" id="password" name="password" required />
+        <button class="deleteButton" type="submit">Delete</button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Select buttons and forms
+      const editProfileButton = document.getElementById("edit-profile-button");
+      const changePasswordButton = document.getElementById(
+        "change-password-button"
+      );
+      const deleteAccountButton = document.getElementById(
+        "delete-account-button"
+      );
+
+      const editProfileForm = document.getElementById("edit-profile-form");
+      const changePasswordForm = document.getElementById(
+        "change-password-form"
+      );
+      const deleteAccountForm = document.getElementById("delete-account-form");
+      const errorBlock = document.getElementById("error-block");
+
+      // Function to hide all forms
+      function hideAllForms() {
+        editProfileForm.style.display = "none";
+        changePasswordForm.style.display = "none";
+        deleteAccountForm.style.display = "none";
+      }
+
+      // Event listeners for buttons
+      editProfileButton.addEventListener("click", () => {
+        hideAllForms();
+        editProfileForm.style.display = "block"; // Show edit profile form
+      });
+
+      changePasswordButton.addEventListener("click", () => {
+        hideAllForms();
+        changePasswordForm.style.display = "block"; // Show change password form
+      });
+
+      deleteAccountButton.addEventListener("click", () => {
+        hideAllForms();
+        deleteAccountForm.style.display = "block"; // Show delete account form
+      });
+
+      // Example to show the error block (you can customize this based on error conditions)
+      function showError(message) {
+        errorBlock.querySelector("p").textContent = message;
+        errorBlock.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

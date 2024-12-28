@@ -1,0 +1,308 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar */
+  .navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover {
+    color: #f8d7da !important;
+  }
+  /* Limit the size of the post container */
+.post-card {
+  max-width: 400px;
+  max-height: 500px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+/* Ensure the carousel images and videos are uniform */
+.media-image,
+.media-video {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Truncate description text if too long */
+.post-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Limit carousel height */
+.carousel-inner {
+  height: 200px;
+}
+/* Container for posts */
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Post Card */
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px; /* Fixed width for consistent alignment */
+  max-height: 550px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Styling */
+.media-image,
+.media-video,
+.media-audio {
+  max-height: 180px;
+  object-fit: cover;
+}
+
+/* Smaller Carousel Controls */
+.small-carousel-control {
+  width: 30px;
+  height: 30px;
+  opacity: 0.7;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* Description Section */
+.scrollable-description {
+  max-height: 150px; /* Enlarged description area */
+  overflow-y: auto;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Carousel Inner Content */
+.carousel-inner {
+  height: 180px;
+}
+
+/* Post Actions */
+.post-actions button {
+  flex: 1;
+  margin: 0 0.2rem;
+}
+
+/* Post Actions */
+.post-actions button {
+  flex: 1;
+  margin: 0 0.2rem;
+}
+
+  /* Page Container */
+  .container {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  /* Post Card */
+  .card {
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .btn {
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #198754;
+    color: #fff;
+  }
+  
+  /* Comments Section */
+  .list-group-item {
+    border: none;
+    background-color: #f8f9fa;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .comment-form .form-control {
+    border-radius: 20px;
+    box-shadow: none;
+  }
+  
+  .comment-form .btn {
+    border-radius: 20px;
+  }
+  
+  /* Footer (Optional) */
+  footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  /* Container for posts */
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Post Card */
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px; /* Increased width for larger posts */
+  max-height: 650px; /* Increased height for larger posts */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Styling */
+.media-image,
+.media-video,
+.media-audio {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* Container for posts */
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  overflow: hidden; /* Prevent horizontal overflow */
+}
+
+/* Post Card */
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px; /* Increased width for larger posts */
+  max-height: 650px; /* Increased height for larger posts */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Styling */
+.media-image,
+.media-video,
+.media-audio {
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%; /* Ensure media content fits within the carousel */
+}
+
+/* Smaller Carousel Controls */
+.small-carousel-control {
+  width: 30px;
+  height: 30px;
+  opacity: 0.7;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* Description Section */
+.scrollable-description {
+  max-height: 150px; /* Adjust the height to allow for more description */
+  /* overflow-x: hidden; */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Carousel Inner Content */
+.carousel-inner {
+  height: 200px; /* Adjusted height for a better media view */
+  overflow: hidden; /* Prevent horizontal scroll */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Ensure media items are centered */
+}
+
+/* Centering Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+/* Post Actions */
+.post-actions button {
+  flex: 1;
+  margin: 0 0.2rem;
+}
+
+.cooment{
+  overflow: scroll !important;
+}

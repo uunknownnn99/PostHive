@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostHive</title>
+    <link rel="stylesheet" href="/styleLoginSignup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>PostHive</h1>
+      <p>Effortlessly track and manage your Finances!</p>
+    </header>
+
+    <div class="auth-buttons">
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeLogin">&times;</span>
+        <h2>Login</h2>
+        <form action="/user/login" method="POST">
+          <label for="loginEmail">Email</label>
+          <input type="email" name="email" id="loginEmail" required />
+
+          <label for="loginPassword">Password</label>
+          <input type="password" name="password" id="loginPassword" required />
+          <div class="show-password">
+            <input type="checkbox" id="showLoginPassword" /> Show Password
+          </div>
+
+          <button type="submit" class="submit-btn">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signupForm" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeSignup">&times;</span>
+        <h2>Sign Up</h2>
+        <form action="/user/signup" method="POST" enctype="multipart/form-data">
+          <label for="signupEmail">Email</label>
+          <input type="email" name="email" id="signupEmail" required />
+
+          <label for="signupUsername">Username</label>
+          <input type="text" name="name" id="signupUsername" required />
+
+          <label for="signupPassword">Password</label>
+          <input type="password" name="password" id="signupPassword" required />
+          <div class="show-password">
+            <input type="checkbox" id="showSignupPassword" /> Show Password
+          </div>
+
+          <label for="profilePicture">Profile Picture</label>
+          <input
+            type="file"
+            name="profileImage"
+            id="profilePicture"
+            accept="image/*"
+          />
+          <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <% if (error && error.length > 0) { %>
+    <div class="error">
+      <pre><%= error %></pre>
+    </div>
+    <% } %>
+
+    <script>
+      // JavaScript to toggle modals
+      document.getElementById("loginBtn").onclick = function () {
+        document.getElementById("loginForm").style.display = "flex";
+      };
+
+      document.getElementById("signupBtn").onclick = function () {
+        document.getElementById("signupForm").style.display = "flex";
+      };
+
+      document.getElementById("closeLogin").onclick = function () {
+        document.getElementById("loginForm").style.display = "none";
+      };
+
+      document.getElementById("closeSignup").onclick = function () {
+        document.getElementById("signupForm").style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == document.getElementById("loginForm")) {
+          document.getElementById("loginForm").style.display = "none";
+        }
+        if (event.target == document.getElementById("signupForm")) {
+          document.getElementById("signupForm").style.display = "none";
+        }
+      };
+
+      // Show Password functionality
+      const loginPasswordInput = document.getElementById("loginPassword");
+      const showLoginPassword = document.getElementById("showLoginPassword");
+      showLoginPassword.addEventListener("change", () => {
+        loginPasswordInput.type = showLoginPassword.checked
+          ? "text"
+          : "password";
+      });
+
+      const signupPasswordInput = document.getElementById("signupPassword");
+      const showSignupPassword = document.getElementById("showSignupPassword");
+      showSignupPassword.addEventListener("change", () => {
+        signupPasswordInput.type = showSignupPassword.checked
+          ? "text"
+          : "password";
+      });
+    </script>
+  </body>
+</html>
